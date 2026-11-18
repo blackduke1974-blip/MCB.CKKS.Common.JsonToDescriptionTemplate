@@ -8,9 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MCB.CKKS.Common.DependencyInjection" Version="1.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Scriban" Version="5.10.0" />
+    <PackageReference Include="MCB.CKKS.Common.DependencyInjection" Version="1.1.322.981" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Scriban" Version="7.6.1" />
   </ItemGroup>
 
 </Project>
