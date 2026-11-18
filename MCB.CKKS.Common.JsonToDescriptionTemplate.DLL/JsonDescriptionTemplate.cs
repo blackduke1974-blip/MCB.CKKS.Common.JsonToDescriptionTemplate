@@ -34,9 +34,6 @@ public class JsonDescriptionTemplate : DisposableBase, IJsonDescriptionTemplate,
         var template = Template.Parse(templateContent);
         return template.Render(context);
     }
-    /// <summary>
-    /// Рендеринг шаблона с использованием JSON-данных (на основе Newtonsoft.Json)
-    /// </summary>
     private ScriptObject BuildScriptObject(ExpandoObject expando)
     {
 

@@ -8,4 +8,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MCB.CKKS.Common.JsonToDescriptionTemplate.DLL\MCB.CKKS.Common.JsonToDescriptionTemplate.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MCB.CKKS.Common.DependencyInjection" Version="1.1.322.981" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0" />
+  </ItemGroup>
+
 </Project>

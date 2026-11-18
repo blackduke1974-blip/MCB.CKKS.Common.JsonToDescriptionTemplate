@@ -1,3 +1,8 @@
+using Microsoft.Extensions.DependencyInjection;
+using MCB.CKKS.Common.DependencyInjection;
+using MCB.CKKS.Common.JsonToDescriptionTemplate.Interfaces;
+using MCB.CKKS.Common.JsonToDescriptionTemplate.UI;
+
 namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
 {
     internal static class Program
@@ -8,10 +13,21 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            var services = new ServiceCollection();
+
+            // Регистрация сервисов из DLL
+            services.AddTransient<IJsonDescriptionTemplate, JsonDescriptionTemplate>();
+            services.AddTransient<FormMain>();
+
+            // Создание контейнера
+            var serviceProvider = services.BuildServiceProvider();
+
+            // Разрешение главной формы через DI
+            var formMain = serviceProvider.GetRequiredService<FormMain>();
+
+            Application.Run(formMain);
         }
     }
 }
