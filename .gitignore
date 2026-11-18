@@ -1,0 +1,53 @@
+# .NET / C#
+bin/
+obj/
+*.user
+*.suo
+*.cache
+
+# Visual Studio
+.vs/
+*.pidb
+*.userosscache
+
+# JetBrains Rider
+*.sln.DotSettings
+*.sln.DotSettings.user
+**/obj/
+**/bin/
+.idea/
+
+# NuGet
+*.nupkg
+nuget.config
+**/packages/*
+!packages/
+
+# Build outputs (только в bin/obj, не глобально)
+# *.dll, *.exe, *.pdb, *.xml игнорируются через bin/ и obj/
+
+# VS Code (только пользовательские настройки)
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/debugger-launch.json
+.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+*.log.*
+
+# Environment
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.temp
+~*
+*~

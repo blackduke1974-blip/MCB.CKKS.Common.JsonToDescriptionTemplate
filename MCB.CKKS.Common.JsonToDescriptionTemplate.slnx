@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MCB.CKKS.Common.JsonToDescriptionTemplate.DLL/MCB.CKKS.Common.JsonToDescriptionTemplate.csproj" />
+  <Project Path="MCB.CKKS.Common.JsonToDescriptionTemplate.UI/MCB.CKKS.Common.JsonToDescriptionTemplate.UI.csproj" />
+</Solution>
