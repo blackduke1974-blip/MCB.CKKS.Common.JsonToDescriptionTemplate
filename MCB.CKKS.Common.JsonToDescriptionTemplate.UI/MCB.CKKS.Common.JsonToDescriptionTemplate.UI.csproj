@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CDS.Markdown" Version="1.5.7" />
     <PackageReference Include="MCB.CKKS.Common.DependencyInjection" Version="1.1.322.981" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0" />
   </ItemGroup>
