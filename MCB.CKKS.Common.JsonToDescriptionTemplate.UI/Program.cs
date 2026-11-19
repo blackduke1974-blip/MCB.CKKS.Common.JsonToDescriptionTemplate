@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using MCB.CKKS.Common.DependencyInjection;
 using MCB.CKKS.Common.JsonToDescriptionTemplate.Interfaces;
-using MCB.CKKS.Common.JsonToDescriptionTemplate.UI;
 
 namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
 {
@@ -19,12 +18,13 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
 
             // Регистрация сервисов из DLL
             services.AddTransient<IJsonDescriptionTemplate, JsonDescriptionTemplate>();
-            services.AddTransient<FormMain>();
+            services.AddScoped<FormMain>();
 
-            // Создание контейнера
+            // Регистрация всех сервисов с маркировкой интерфейсами ITransientService/IScopedService
+            services.RegisterServices();
+
+            // Создание контейнера и разрешение главной формы через DI
             var serviceProvider = services.BuildServiceProvider();
-
-            // Разрешение главной формы через DI
             var formMain = serviceProvider.GetRequiredService<FormMain>();
 
             Application.Run(formMain);

@@ -1,10 +1,11 @@
 using System.ComponentModel;
 using Newtonsoft.Json;
+using MCB.CKKS.Common.DependencyInjection;
 using MCB.CKKS.Common.JsonToDescriptionTemplate.Interfaces;
 
 namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
 {
-    public partial class FormMain : Form
+    public partial class FormMain : Form, IScopedService<FormMain>
     {
         private readonly IJsonDescriptionTemplate _jsonDescriptionTemplate;
         private readonly BindingList<RenderItem> _renders = new();
