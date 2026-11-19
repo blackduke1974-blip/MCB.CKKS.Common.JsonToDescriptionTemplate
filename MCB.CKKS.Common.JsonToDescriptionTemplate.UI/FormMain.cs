@@ -227,11 +227,14 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
                     Type = RenderType.Concatenation
                 };
 
+                foreach (var item in _renders)
+                    item.IsSelected = false;
+
                 _renders.Add(combinedItem);
                 _suppressSelectionChanged = true;
                 dgvRenders.CurrentCell = dgvRenders.Rows[dgvRenders.Rows.Count - 1].Cells[0];
                 _suppressSelectionChanged = false;
-                combinedItem.IsSelected = true;
+                combinedItem.IsSelected = false;
                 await mdViewer.LoadMarkdownFromStringAsync(combinedItem.Markdown);
             }
             catch (Exception ex)
