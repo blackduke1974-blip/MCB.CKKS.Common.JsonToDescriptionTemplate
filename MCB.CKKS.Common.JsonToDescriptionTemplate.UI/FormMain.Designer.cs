@@ -33,6 +33,25 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         {
             components = new System.ComponentModel.Container();
             mdViewer = new MarkdownViewer();
+            groupBoxList = new GroupBox();
+            dgvRenders = new DataGridView();
+            chkSelectColumn = new DataGridViewCheckBoxColumn();
+            colName = new DataGridViewTextBoxColumn();
+            colType = new DataGridViewTextBoxColumn();
+            pnlActions = new FlowLayoutPanel();
+            btnSaveAs = new Button();
+            btnMoveDown = new Button();
+            btnMoveUp = new Button();
+            btnConcatenate = new Button();
+            btnDeleteSelected = new Button();
+            toolTipActions = new ToolTip(components);
+            groupBoxFiles = new GroupBox();
+            btnRender = new Button();
+            btnSelectTemplate = new Button();
+            cmbTemplateFile = new ComboBox();
+            btnSelectJson = new Button();
+            cmbJsonFile = new ComboBox();
+            splitter1 = new Splitter();
             mdViewer.BorderStyle = BorderStyle.Fixed3D;
             mdViewer.Dock = DockStyle.Fill;
             mdViewer.Location = new Point(361, 86);
