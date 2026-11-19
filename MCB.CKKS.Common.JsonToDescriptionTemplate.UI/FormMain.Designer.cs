@@ -88,6 +88,7 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
             dgvRenders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRenders.Size = new Size(309, 508);
             dgvRenders.TabIndex = 7;
+            dgvRenders.RowHeadersVisible = false;
             dgvRenders.SelectionChanged += dgvRenders_SelectionChanged;
             // 
             // chkSelectColumn

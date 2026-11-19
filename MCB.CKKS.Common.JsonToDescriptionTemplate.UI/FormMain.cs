@@ -92,7 +92,7 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         {
             using var dlg = new OpenFileDialog
             {
-                Filter = "Text files|*.txt|Scriban files|*.sb|All files|*.*",
+                Filter = "Scriban files|*.sb|All files|*.*",
                 Title = "Выберите файл шаблона"
             };
             if (dlg.ShowDialog() == DialogResult.OK)
