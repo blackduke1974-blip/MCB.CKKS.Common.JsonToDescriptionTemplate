@@ -8,14 +8,7 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        private System.Windows.Forms.TextBox txtJsonFile;
-        private System.Windows.Forms.Button btnSelectJson;
-        private System.Windows.Forms.TextBox txtTemplateFile;
-        private System.Windows.Forms.Button btnSelectTemplate;
         private MarkdownViewer mdViewer;
-        private System.Windows.Forms.Button btnRender;
-        private System.Windows.Forms.ListBox lstRenders;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -23,7 +16,7 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -38,102 +31,302 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         /// </summary>
         private void InitializeComponent()
         {
-            txtJsonFile = new System.Windows.Forms.TextBox();
-            btnSelectJson = new System.Windows.Forms.Button();
-            txtTemplateFile = new System.Windows.Forms.TextBox();
-            btnSelectTemplate = new System.Windows.Forms.Button();
             mdViewer = new MarkdownViewer();
-            btnRender = new System.Windows.Forms.Button();
-            lstRenders = new System.Windows.Forms.ListBox();
+            groupBoxList = new GroupBox();
+            dgvRenders = new DataGridView();
+            chkSelectColumn = new DataGridViewCheckBoxColumn();
+            colName = new DataGridViewTextBoxColumn();
+            colType = new DataGridViewTextBoxColumn();
+            components = new System.ComponentModel.Container();
+            pnlActions = new FlowLayoutPanel();
+            btnSaveAs = new Button();
+            btnMoveDown = new Button();
+            btnMoveUp = new Button();
+            btnConcatenate = new Button();
+            btnDeleteSelected = new Button();
+            toolTipActions = new ToolTip(components);
+            groupBoxFiles = new GroupBox();
+            btnRender = new Button();
+            btnSelectTemplate = new Button();
+            cmbTemplateFile = new ComboBox();
+            btnSelectJson = new Button();
+            cmbJsonFile = new ComboBox();
+            splitter1 = new Splitter();
+            groupBoxList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvRenders).BeginInit();
+            pnlActions.SuspendLayout();
+            groupBoxFiles.SuspendLayout();
             SuspendLayout();
-            // 
-            // txtJsonFile
-            // 
-            txtJsonFile.Location = new System.Drawing.Point(12, 12);
-            txtJsonFile.Name = "txtJsonFile";
-            txtJsonFile.ReadOnly = true;
-            txtJsonFile.Size = new System.Drawing.Size(500, 23);
-            txtJsonFile.TabIndex = 0;
-            // 
-            // btnSelectJson
-            // 
-            btnSelectJson.Location = new System.Drawing.Point(518, 12);
-            btnSelectJson.Name = "btnSelectJson";
-            btnSelectJson.Size = new System.Drawing.Size(75, 23);
-            btnSelectJson.TabIndex = 1;
-            btnSelectJson.Text = "Выбрать";
-            btnSelectJson.UseVisualStyleBackColor = true;
-            btnSelectJson.Click += btnSelectJson_Click;
-            // 
-            // txtTemplateFile
-            // 
-            txtTemplateFile.Location = new System.Drawing.Point(12, 41);
-            txtTemplateFile.Name = "txtTemplateFile";
-            txtTemplateFile.ReadOnly = true;
-            txtTemplateFile.Size = new System.Drawing.Size(500, 23);
-            txtTemplateFile.TabIndex = 2;
-            // 
-            // btnSelectTemplate
-            // 
-            btnSelectTemplate.Location = new System.Drawing.Point(518, 41);
-            btnSelectTemplate.Name = "btnSelectTemplate";
-            btnSelectTemplate.Size = new System.Drawing.Size(75, 23);
-            btnSelectTemplate.TabIndex = 3;
-            btnSelectTemplate.Text = "Выбрать";
-            btnSelectTemplate.UseVisualStyleBackColor = true;
-            btnSelectTemplate.Click += btnSelectTemplate_Click;
-            // 
-            // lstRenders
-            // 
-            lstRenders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                | System.Windows.Forms.AnchorStyles.Left)));
-            lstRenders.FormattingEnabled = true;
-            lstRenders.ItemHeight = 15;
-            lstRenders.Location = new System.Drawing.Point(12, 70);
-            lstRenders.Name = "lstRenders";
-            lstRenders.Size = new System.Drawing.Size(250, 364);
-            lstRenders.TabIndex = 6;
-            lstRenders.SelectedIndexChanged += lstRenders_SelectedIndexChanged;
             // 
             // mdViewer
             // 
-            mdViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                | System.Windows.Forms.AnchorStyles.Left)
-                | System.Windows.Forms.AnchorStyles.Right)));
-            mdViewer.Location = new System.Drawing.Point(268, 70);
+            mdViewer.Dock = DockStyle.Fill;
+            mdViewer.Location = new Point(361, 86);
             mdViewer.Name = "mdViewer";
-            mdViewer.Options.ShowNavigationToolbar = true;
-            mdViewer.Size = new System.Drawing.Size(520, 368);
+            mdViewer.Size = new Size(855, 444);
             mdViewer.TabIndex = 4;
+            // 
+            // groupBoxList
+            // 
+            groupBoxList.Controls.Add(dgvRenders);
+            groupBoxList.Controls.Add(pnlActions);
+            groupBoxList.Dock = DockStyle.Left;
+            groupBoxList.Location = new Point(0, 0);
+            groupBoxList.Name = "groupBoxList";
+            groupBoxList.Size = new Size(351, 530);
+            groupBoxList.TabIndex = 8;
+            groupBoxList.TabStop = false;
+            groupBoxList.Text = "Список обработанных данных";
+            // 
+            // dgvRenders
+            // 
+            dgvRenders.AllowUserToAddRows = false;
+            dgvRenders.AllowUserToDeleteRows = false;
+            dgvRenders.AllowUserToResizeRows = false;
+            dgvRenders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRenders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRenders.Columns.AddRange(new DataGridViewColumn[] { chkSelectColumn, colName, colType });
+            dgvRenders.Dock = DockStyle.Fill;
+            dgvRenders.Location = new Point(110, 19);
+            dgvRenders.MultiSelect = false;
+            dgvRenders.Name = "dgvRenders";
+            dgvRenders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRenders.Size = new Size(238, 508);
+            dgvRenders.TabIndex = 7;
+            dgvRenders.SelectionChanged += dgvRenders_SelectionChanged;
+            // 
+            // chkSelectColumn
+            // 
+            chkSelectColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            chkSelectColumn.DataPropertyName = "IsSelected";
+            chkSelectColumn.FalseValue = false;
+            chkSelectColumn.HeaderText = "";
+            chkSelectColumn.Name = "chkSelectColumn";
+            chkSelectColumn.Resizable = DataGridViewTriState.True;
+            chkSelectColumn.TrueValue = true;
+            chkSelectColumn.Width = 30;
+            // 
+            // colName
+            // 
+            colName.DataPropertyName = "Name";
+            colName.FillWeight = 50F;
+            colName.HeaderText = "Название";
+            colName.Name = "colName";
+            colName.ReadOnly = true;
+            // 
+            // colType
+            // 
+            colType.DataPropertyName = "TypeDisplay";
+            colType.FillWeight = 50F;
+            colType.HeaderText = "Тип";
+            colType.Name = "colType";
+            colType.ReadOnly = true;
+            // 
+            // pnlActions
+            // 
+            pnlActions.Controls.Add(btnSaveAs);
+            pnlActions.Controls.Add(btnMoveDown);
+            pnlActions.Controls.Add(btnMoveUp);
+            pnlActions.Controls.Add(btnConcatenate);
+            pnlActions.Controls.Add(btnDeleteSelected);
+            pnlActions.FlowDirection = FlowDirection.TopDown;
+            pnlActions.Location = new Point(3, 19);
+            pnlActions.Name = "pnlActions";
+            pnlActions.Size = new Size(36, 488);
+            pnlActions.TabIndex = 8;
+            // 
+            // btnSaveAs
+            // 
+            btnSaveAs.FlatAppearance.BorderSize = 0;
+            btnSaveAs.Font = new Font("Segoe UI Symbol", 11F);
+            btnSaveAs.ForeColor = Color.FromArgb(48, 48, 48);
+            btnSaveAs.Location = new Point(3, 133);
+            btnSaveAs.Name = "btnSaveAs";
+            btnSaveAs.Size = new Size(30, 30);
+            btnSaveAs.TabIndex = 4;
+            btnSaveAs.Text = "💾";
+            btnSaveAs.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnSaveAs.UseVisualStyleBackColor = true;
+            btnSaveAs.Click += btnSaveAs_Click;
+            toolTipActions.SetToolTip(btnSaveAs, "Сохранить как");
+            // 
+            // btnMoveDown
+            // 
+            btnMoveDown.FlatAppearance.BorderSize = 0;
+            btnMoveDown.Font = new Font("Segoe UI Symbol", 11F);
+            btnMoveDown.ForeColor = Color.FromArgb(48, 48, 48);
+            btnMoveDown.Location = new Point(3, 97);
+            btnMoveDown.Name = "btnMoveDown";
+            btnMoveDown.Size = new Size(30, 30);
+            btnMoveDown.TabIndex = 3;
+            btnMoveDown.Text = "⬇";
+            btnMoveDown.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnMoveDown.UseVisualStyleBackColor = true;
+            btnMoveDown.Click += btnMoveDown_Click;
+            toolTipActions.SetToolTip(btnMoveDown, "Вниз");
+            // 
+            // btnMoveUp
+            // 
+            btnMoveUp.FlatAppearance.BorderSize = 0;
+            btnMoveUp.Font = new Font("Segoe UI Symbol", 11F);
+            btnMoveUp.ForeColor = Color.FromArgb(48, 48, 48);
+            btnMoveUp.Location = new Point(3, 61);
+            btnMoveUp.Name = "btnMoveUp";
+            btnMoveUp.Size = new Size(30, 30);
+            btnMoveUp.TabIndex = 2;
+            btnMoveUp.Text = "⬆";
+            btnMoveUp.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnMoveUp.UseVisualStyleBackColor = true;
+            btnMoveUp.Click += btnMoveUp_Click;
+            toolTipActions.SetToolTip(btnMoveUp, "Вверх");
+            // 
+            // btnConcatenate
+            // 
+            btnConcatenate.FlatAppearance.BorderSize = 0;
+            btnConcatenate.Font = new Font("Segoe UI Symbol", 11F);
+            btnConcatenate.ForeColor = Color.FromArgb(48, 48, 48);
+            btnConcatenate.Location = new Point(3, 25);
+            btnConcatenate.Name = "btnConcatenate";
+            btnConcatenate.Size = new Size(30, 30);
+            btnConcatenate.TabIndex = 1;
+            btnConcatenate.Text = "🔗";
+            btnConcatenate.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnConcatenate.UseVisualStyleBackColor = true;
+            btnConcatenate.Click += btnConcatenate_Click;
+            toolTipActions.SetToolTip(btnConcatenate, "Склеить");
+            // 
+            // btnDeleteSelected
+            // 
+            btnDeleteSelected.FlatAppearance.BorderSize = 0;
+            btnDeleteSelected.Font = new Font("Segoe UI Symbol", 11F);
+            btnDeleteSelected.ForeColor = Color.FromArgb(48, 48, 48);
+            btnDeleteSelected.Location = new Point(3, 0);
+            btnDeleteSelected.Name = "btnDeleteSelected";
+            btnDeleteSelected.Size = new Size(30, 30);
+            btnDeleteSelected.TabIndex = 0;
+            btnDeleteSelected.Text = "✕";
+            btnDeleteSelected.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnDeleteSelected.UseVisualStyleBackColor = true;
+            btnDeleteSelected.Click += btnDeleteSelected_Click;
+            toolTipActions.SetToolTip(btnDeleteSelected, "Удалить");
+            // 
+            // groupBoxFiles
+            // 
+            groupBoxFiles.Controls.Add(btnRender);
+            groupBoxFiles.Controls.Add(btnSelectTemplate);
+            groupBoxFiles.Controls.Add(cmbTemplateFile);
+            groupBoxFiles.Controls.Add(btnSelectJson);
+            groupBoxFiles.Controls.Add(cmbJsonFile);
+            groupBoxFiles.Dock = DockStyle.Top;
+            groupBoxFiles.Location = new Point(361, 0);
+            groupBoxFiles.Name = "groupBoxFiles";
+            groupBoxFiles.Size = new Size(855, 86);
+            groupBoxFiles.TabIndex = 9;
+            groupBoxFiles.TabStop = false;
+            groupBoxFiles.Text = "Обработка файлов";
             // 
             // btnRender
             // 
-            btnRender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            btnRender.Location = new System.Drawing.Point(599, 12);
+            btnRender.Location = new Point(6, 22);
             btnRender.Name = "btnRender";
-            btnRender.Size = new System.Drawing.Size(189, 23);
-            btnRender.TabIndex = 5;
+            btnRender.Size = new Size(191, 23);
+            btnRender.TabIndex = 10;
             btnRender.Text = "Рендер";
             btnRender.UseVisualStyleBackColor = true;
             btnRender.Click += btnRender_Click;
             // 
+            // btnSelectTemplate
+            // 
+            btnSelectTemplate.Location = new Point(216, 50);
+            btnSelectTemplate.Name = "btnSelectTemplate";
+            btnSelectTemplate.Size = new Size(191, 23);
+            btnSelectTemplate.TabIndex = 9;
+            btnSelectTemplate.Text = "Выбрать шаблон";
+            btnSelectTemplate.UseVisualStyleBackColor = true;
+            btnSelectTemplate.Click += btnSelectTemplate_Click;
+            // 
+            // cmbTemplateFile
+            // 
+            cmbTemplateFile.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cmbTemplateFile.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbTemplateFile.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cmbTemplateFile.DropDownHeight = 200;
+            cmbTemplateFile.FormattingEnabled = true;
+            cmbTemplateFile.IntegralHeight = false;
+            cmbTemplateFile.Location = new Point(413, 51);
+            cmbTemplateFile.Name = "cmbTemplateFile";
+            cmbTemplateFile.Size = new Size(436, 23);
+            cmbTemplateFile.TabIndex = 8;
+            // 
+            // btnSelectJson
+            // 
+            btnSelectJson.Location = new Point(216, 22);
+            btnSelectJson.Name = "btnSelectJson";
+            btnSelectJson.Size = new Size(191, 23);
+            btnSelectJson.TabIndex = 7;
+            btnSelectJson.Text = "Выбрать источник";
+            btnSelectJson.UseVisualStyleBackColor = true;
+            btnSelectJson.Click += btnSelectJson_Click;
+            // 
+            // cmbJsonFile
+            // 
+            cmbJsonFile.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cmbJsonFile.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbJsonFile.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cmbJsonFile.DropDownHeight = 200;
+            cmbJsonFile.FormattingEnabled = true;
+            cmbJsonFile.IntegralHeight = false;
+            cmbJsonFile.Location = new Point(413, 22);
+            cmbJsonFile.Name = "cmbJsonFile";
+            cmbJsonFile.Size = new Size(436, 23);
+            cmbJsonFile.TabIndex = 6;
+            // 
+            // splitter1
+            // 
+            splitter1.Location = new Point(351, 0);
+            splitter1.Name = "splitter1";
+            splitter1.Size = new Size(10, 530);
+            splitter1.TabIndex = 10;
+            splitter1.TabStop = false;
+            // 
             // FormMain
             // 
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
-            Controls.Add(lstRenders);
-            Controls.Add(btnRender);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1216, 530);
             Controls.Add(mdViewer);
-            Controls.Add(btnSelectTemplate);
-            Controls.Add(txtTemplateFile);
-            Controls.Add(btnSelectJson);
-            Controls.Add(txtJsonFile);
+            Controls.Add(groupBoxFiles);
+            Controls.Add(splitter1);
+            Controls.Add(groupBoxList);
             Name = "FormMain";
             Text = "JsonToDescriptionTemplate";
+            groupBoxList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvRenders).EndInit();
+            pnlActions.ResumeLayout(false);
+            groupBoxFiles.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
+
+        private GroupBox groupBoxList;
+        private FlowLayoutPanel pnlActions;
+        private ToolTip toolTipActions;
+        private DataGridView dgvRenders;
+        private DataGridViewCheckBoxColumn chkSelectColumn;
+        private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colType;
+        private Button btnSaveAs;
+        private Button btnMoveDown;
+        private Button btnMoveUp;
+        private Button btnConcatenate;
+        private Button btnDeleteSelected;
+        private GroupBox groupBoxFiles;
+        private Button btnRender;
+        private Button btnSelectTemplate;
+        private ComboBox cmbTemplateFile;
+        private Button btnSelectJson;
+        private ComboBox cmbJsonFile;
+        private Splitter splitter1;
     }
 }
