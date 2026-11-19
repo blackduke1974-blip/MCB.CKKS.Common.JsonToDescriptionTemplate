@@ -31,18 +31,18 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             mdViewer = new MarkdownViewer();
             groupBoxList = new GroupBox();
             dgvRenders = new DataGridView();
             chkSelectColumn = new DataGridViewCheckBoxColumn();
             colName = new DataGridViewTextBoxColumn();
             colType = new DataGridViewTextBoxColumn();
-            components = new System.ComponentModel.Container();
             pnlActions = new FlowLayoutPanel();
-            btnSaveAs = new Button();
-            btnMoveDown = new Button();
             btnMoveUp = new Button();
+            btnMoveDown = new Button();
             btnConcatenate = new Button();
+            btnSaveAs = new Button();
             btnDeleteSelected = new Button();
             toolTipActions = new ToolTip(components);
             groupBoxFiles = new GroupBox();
@@ -60,6 +60,7 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
             // 
             // mdViewer
             // 
+            mdViewer.BorderStyle = BorderStyle.Fixed3D;
             mdViewer.Dock = DockStyle.Fill;
             mdViewer.Location = new Point(361, 86);
             mdViewer.Name = "mdViewer";
@@ -83,15 +84,16 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
             dgvRenders.AllowUserToAddRows = false;
             dgvRenders.AllowUserToDeleteRows = false;
             dgvRenders.AllowUserToResizeRows = false;
+            dgvRenders.AutoGenerateColumns = false;
             dgvRenders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRenders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRenders.Columns.AddRange(new DataGridViewColumn[] { chkSelectColumn, colName, colType });
             dgvRenders.Dock = DockStyle.Fill;
-            dgvRenders.Location = new Point(110, 19);
+            dgvRenders.Location = new Point(39, 19);
             dgvRenders.MultiSelect = false;
             dgvRenders.Name = "dgvRenders";
             dgvRenders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRenders.Size = new Size(238, 508);
+            dgvRenders.Size = new Size(309, 508);
             dgvRenders.TabIndex = 7;
             dgvRenders.SelectionChanged += dgvRenders_SelectionChanged;
             // 
@@ -124,91 +126,92 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
             // 
             // pnlActions
             // 
-            pnlActions.Controls.Add(btnSaveAs);
-            pnlActions.Controls.Add(btnMoveDown);
             pnlActions.Controls.Add(btnMoveUp);
+            pnlActions.Controls.Add(btnMoveDown);
             pnlActions.Controls.Add(btnConcatenate);
+            pnlActions.Controls.Add(btnSaveAs);
             pnlActions.Controls.Add(btnDeleteSelected);
+            pnlActions.Dock = DockStyle.Left;
             pnlActions.FlowDirection = FlowDirection.TopDown;
             pnlActions.Location = new Point(3, 19);
             pnlActions.Name = "pnlActions";
-            pnlActions.Size = new Size(36, 488);
+            pnlActions.Size = new Size(36, 508);
             pnlActions.TabIndex = 8;
-            // 
-            // btnSaveAs
-            // 
-            btnSaveAs.FlatAppearance.BorderSize = 0;
-            btnSaveAs.Font = new Font("Segoe UI Symbol", 11F);
-            btnSaveAs.ForeColor = Color.FromArgb(48, 48, 48);
-            btnSaveAs.Location = new Point(3, 133);
-            btnSaveAs.Name = "btnSaveAs";
-            btnSaveAs.Size = new Size(30, 30);
-            btnSaveAs.TabIndex = 4;
-            btnSaveAs.Text = "💾";
-            btnSaveAs.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnSaveAs.UseVisualStyleBackColor = true;
-            btnSaveAs.Click += btnSaveAs_Click;
-            toolTipActions.SetToolTip(btnSaveAs, "Сохранить как");
-            // 
-            // btnMoveDown
-            // 
-            btnMoveDown.FlatAppearance.BorderSize = 0;
-            btnMoveDown.Font = new Font("Segoe UI Symbol", 11F);
-            btnMoveDown.ForeColor = Color.FromArgb(48, 48, 48);
-            btnMoveDown.Location = new Point(3, 97);
-            btnMoveDown.Name = "btnMoveDown";
-            btnMoveDown.Size = new Size(30, 30);
-            btnMoveDown.TabIndex = 3;
-            btnMoveDown.Text = "⬇";
-            btnMoveDown.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnMoveDown.UseVisualStyleBackColor = true;
-            btnMoveDown.Click += btnMoveDown_Click;
-            toolTipActions.SetToolTip(btnMoveDown, "Вниз");
             // 
             // btnMoveUp
             // 
             btnMoveUp.FlatAppearance.BorderSize = 0;
             btnMoveUp.Font = new Font("Segoe UI Symbol", 11F);
             btnMoveUp.ForeColor = Color.FromArgb(48, 48, 48);
-            btnMoveUp.Location = new Point(3, 61);
+            btnMoveUp.Location = new Point(3, 3);
             btnMoveUp.Name = "btnMoveUp";
             btnMoveUp.Size = new Size(30, 30);
             btnMoveUp.TabIndex = 2;
             btnMoveUp.Text = "⬆";
             btnMoveUp.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolTipActions.SetToolTip(btnMoveUp, "Вверх");
             btnMoveUp.UseVisualStyleBackColor = true;
             btnMoveUp.Click += btnMoveUp_Click;
-            toolTipActions.SetToolTip(btnMoveUp, "Вверх");
+            // 
+            // btnMoveDown
+            // 
+            btnMoveDown.FlatAppearance.BorderSize = 0;
+            btnMoveDown.Font = new Font("Segoe UI Symbol", 11F);
+            btnMoveDown.ForeColor = Color.FromArgb(48, 48, 48);
+            btnMoveDown.Location = new Point(3, 39);
+            btnMoveDown.Name = "btnMoveDown";
+            btnMoveDown.Size = new Size(30, 30);
+            btnMoveDown.TabIndex = 3;
+            btnMoveDown.Text = "⬇";
+            btnMoveDown.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolTipActions.SetToolTip(btnMoveDown, "Вниз");
+            btnMoveDown.UseVisualStyleBackColor = true;
+            btnMoveDown.Click += btnMoveDown_Click;
             // 
             // btnConcatenate
             // 
             btnConcatenate.FlatAppearance.BorderSize = 0;
             btnConcatenate.Font = new Font("Segoe UI Symbol", 11F);
             btnConcatenate.ForeColor = Color.FromArgb(48, 48, 48);
-            btnConcatenate.Location = new Point(3, 25);
+            btnConcatenate.Location = new Point(3, 75);
             btnConcatenate.Name = "btnConcatenate";
             btnConcatenate.Size = new Size(30, 30);
             btnConcatenate.TabIndex = 1;
             btnConcatenate.Text = "🔗";
             btnConcatenate.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolTipActions.SetToolTip(btnConcatenate, "Склеить");
             btnConcatenate.UseVisualStyleBackColor = true;
             btnConcatenate.Click += btnConcatenate_Click;
-            toolTipActions.SetToolTip(btnConcatenate, "Склеить");
+            // 
+            // btnSaveAs
+            // 
+            btnSaveAs.FlatAppearance.BorderSize = 0;
+            btnSaveAs.Font = new Font("Segoe UI Symbol", 11F);
+            btnSaveAs.ForeColor = Color.FromArgb(48, 48, 48);
+            btnSaveAs.Location = new Point(3, 111);
+            btnSaveAs.Name = "btnSaveAs";
+            btnSaveAs.Size = new Size(30, 30);
+            btnSaveAs.TabIndex = 4;
+            btnSaveAs.Text = "💾";
+            btnSaveAs.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolTipActions.SetToolTip(btnSaveAs, "Сохранить как");
+            btnSaveAs.UseVisualStyleBackColor = true;
+            btnSaveAs.Click += btnSaveAs_Click;
             // 
             // btnDeleteSelected
             // 
             btnDeleteSelected.FlatAppearance.BorderSize = 0;
             btnDeleteSelected.Font = new Font("Segoe UI Symbol", 11F);
             btnDeleteSelected.ForeColor = Color.FromArgb(48, 48, 48);
-            btnDeleteSelected.Location = new Point(3, 0);
+            btnDeleteSelected.Location = new Point(3, 147);
             btnDeleteSelected.Name = "btnDeleteSelected";
             btnDeleteSelected.Size = new Size(30, 30);
             btnDeleteSelected.TabIndex = 0;
             btnDeleteSelected.Text = "✕";
             btnDeleteSelected.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolTipActions.SetToolTip(btnDeleteSelected, "Удалить");
             btnDeleteSelected.UseVisualStyleBackColor = true;
             btnDeleteSelected.Click += btnDeleteSelected_Click;
-            toolTipActions.SetToolTip(btnDeleteSelected, "Удалить");
             // 
             // groupBoxFiles
             // 
