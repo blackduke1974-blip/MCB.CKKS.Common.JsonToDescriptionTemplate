@@ -13,20 +13,13 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-
             var services = new ServiceCollection();
-
-            // Регистрация сервисов из DLL
-            services.AddTransient<IJsonDescriptionTemplate, JsonDescriptionTemplate>();
-            services.AddScoped<FormMain>();
-
             // Регистрация всех сервисов с маркировкой интерфейсами ITransientService/IScopedService
             services.RegisterServices();
-
             // Создание контейнера и разрешение главной формы через DI
             var serviceProvider = services.BuildServiceProvider();
-            var formMain = serviceProvider.GetRequiredService<FormMain>();
 
+            var formMain = serviceProvider.GetRequiredService<FormMain>();
             Application.Run(formMain);
         }
     }

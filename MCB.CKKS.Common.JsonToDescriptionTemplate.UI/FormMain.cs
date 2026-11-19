@@ -324,8 +324,7 @@ namespace MCB.CKKS.Common.JsonToDescriptionTemplate.UI
         private class FileHistory
         {
             private static readonly string HistoryFilePath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "MCB.CKKS.Common.JsonToDescriptionTemplate",
+                AppContext.BaseDirectory,
                 "appsettings.json");
 
             public List<string> JsonFiles { get; set; } = new();
