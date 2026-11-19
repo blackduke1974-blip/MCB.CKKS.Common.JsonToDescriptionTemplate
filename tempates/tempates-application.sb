@@ -1,0 +1,16 @@
+# {{this.name}} ({{this.id ?? "Без ID"}})
+```
+{{this.notes}}
+```
+## Переменные конвейера
+
+{{~ if this.variables ~}}
+{{~ for v in this.variables ~}}
+**{{v.key}}**
+```
+{{v.value}}
+```
+{{~ end ~}}
+{{~ else ~}}
+Нет данных
+{{~ end ~}}

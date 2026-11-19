@@ -1,0 +1,38 @@
+## Реализация: {{this.version_number}} ({{this.id}})
+
+### Граф зависимостей GraphItems
+
+| Таск| Зависимости |
+|----------|----------|
+{{~ for item in this.graph_items ~}}
+|***{{item.name}}***|{{~ for prev_id in item.prev_graph_id ~}}{{~ for dep in this.graph_items ~}}{{~ if dep.id == prev_id ~}}```{{dep.name}}```;{{~ end ~}}{{~ end ~}}{{~ end ~}}|
+{{~ end ~}}
+
+### Детальные зависимости
+
+{{~ for item in this.graph_items ~}}
+#### {{item.name}}
+
+**Зависит от:**
+{{~ for prev_id in item.prev_graph_id ~}}
+{{~ for dep in this.graph_items ~}}{{~ if dep.id == prev_id ~}}```{{dep.name}}```;{{~ end ~}}{{~ end ~}}
+{{~ end ~}}
+\
+**От него зависят:**
+{{~ for other in this.graph_items ~}}
+  {{~ for pid in other.prev_graph_id ~}}
+    {{~ if pid == item.id ~}}
+  ```{{other.name}}```;
+    {{~ end ~}}
+  {{~ end ~}}
+{{~ end ~}}
+
+{{~ end ~}}
+
+## Якоря
+{{~ for item in this.anchors ~}}
+### {{item.name}} (CodeType = {{item.code_type}} )
+```
+{{item.value}}
+```
+{{~ end ~}}

@@ -1,0 +1,30 @@
+# Подконвейер: {{this.name}}
+
+| ID | ActiveVersionID |
+|----------|----------|
+| {{this.id}} | {{this.active_version_id}} |
+```
+{{this.notes}} 
+```
+## Scheduler
+
+{{~ if this.scheduler ~}}
+| Запуск | Остановка | Интервал |
+|----------|----------|----------|
+| {{this.scheduler.begin}} | {{this.scheduler.end}} | {{this.scheduler.interval}} |
+{{~ else ~}}
+Нет ограничений
+{{~ end ~}}
+
+## Переменные подконвейера
+
+{{~ if this.variables ~}}
+{{~ for v in this.variables ~}}
+**{{v.key}}**
+```
+{{v.value}}
+```
+{{~ end ~}}
+{{~ else ~}}
+Нет данных
+{{~ end ~}}
